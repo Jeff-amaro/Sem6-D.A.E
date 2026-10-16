@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ article.title }} - News Portal{% endblock %}
+
+{% block content %}
+    <article class="article-detail">
+        <h1>{{ article.title }}</h1>
+
+        <p class="article-meta">
+            By {{ article.author.get_full_name }} &middot;
+            <time datetime="{{ article.published_at|date:'c' }}">
+                {{ article.published_at|date:"F j, Y H:i" }}
+            </time>
+        </p>
+
+        {% if article.featured_image %}
+            <img class="article-image" src="{{ article.featured_image.url }}" alt="{{ article.title }}">
+        {% endif %}
+
+        <div class="article-body">{{ article.body|linebreaks }}</div>
+
+        <h2>Categories</h2>
+        <ul class="article-categories">
+            {% for category in article.categories.all %}
+                <li>
+                    <a href="{% url 'news:category_list' category.slug %}">{{ category.name }}</a>
+                </li>
+            {% empty %}
+                <li>No categories assigned.</li>
+            {% endfor %}
+        </ul>
+
+        <p class="back-link"><a href="{% url 'news:home' %}">&laquo; Back to home</a></p>
+    </article>
+{% endblock %}
+
+{% block sidebar %}
+    <h2>Author</h2>
+    {% if article.author.photo %}
+        <img class="author-photo" src="{{ article.author.photo.url }}" alt="{{ article.author.get_full_name }}">
+    {% endif %}
+    <p class="author-name">{{ article.author.get_full_name }}</p>
+    {% if article.author.biography %}
+        <p class="author-biography">{{ article.author.biography }}</p>
+    {% endif %}
+{% endblock %}
