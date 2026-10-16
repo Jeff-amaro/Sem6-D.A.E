@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}News Portal{% endblock %}</title>
+</head>
+<body>
+    <header class="site-header">
+        <a class="site-brand" href="/">News Portal</a>
+        <p class="site-tagline">Breaking news, features and analysis</p>
+    </header>
+
+    <div class="layout">
+        <main class="content">
+            {% block content %}{% endblock %}
+        </main>
+
+        <aside class="sidebar">
+            {% block sidebar %}
+                <h2>About the portal</h2>
+                <p>Latest stories from every section of the newsroom.</p>
+            {% endblock %}
+        </aside>
+    </div>
+
+    <footer class="site-footer">
+        <p>&copy; 2026 News Portal. All rights reserved.</p>
+    </footer>
+</body>
+</html>
