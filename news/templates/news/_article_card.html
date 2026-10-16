@@ -1,0 +1,32 @@
+{% comment %}
+Reusable card for a single article. It is rendered as an include from the home
+page and from the category listing, so the markup lives in only one place.
+{% endcomment %}
+<article class="article-card">
+    {% if article.featured_image %}
+        <a class="article-card-image" href="{% url 'news:article_detail' article.slug %}">
+            <img src="{{ article.featured_image.url }}" alt="{{ article.title }}">
+        </a>
+    {% endif %}
+
+    <h2 class="article-card-title">
+        <a href="{% url 'news:article_detail' article.slug %}">{{ article.title }}</a>
+    </h2>
+
+    <p class="article-card-summary">{{ article.summary|truncatewords:30 }}</p>
+
+    <p class="article-card-meta">
+        By {{ article.author.get_full_name }} &middot;
+        <time datetime="{{ article.published_at|date:'c' }}">
+            {{ article.published_at|date:"F j, Y" }}
+        </time>
+    </p>
+
+    <ul class="article-card-categories">
+        {% for category in article.categories.all %}
+            <li>
+                <a href="{% url 'news:category_list' category.slug %}">{{ category.name }}</a>
+            </li>
+        {% endfor %}
+    </ul>
+</article>
