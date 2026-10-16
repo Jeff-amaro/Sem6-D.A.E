@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ category.name }} - News Portal{% endblock %}
+
+{% block content %}
+    <h1>{{ category.name }}</h1>
+
+    {% if category.description %}
+        <p class="category-description">{{ category.description }}</p>
+    {% endif %}
+
+    <section class="article-list">
+        {% for article in articles %}
+            {% include 'news/_article_card.html' %}
+        {% empty %}
+            <p class="empty-state">No articles in this category yet.</p>
+        {% endfor %}
+    </section>
+{% endblock %}
+
+{% block sidebar %}
+    <h2>Other categories</h2>
+    <ul class="category-list">
+        {% for other_category in categories %}
+            {% if other_category.pk != category.pk %}
+                <li>
+                    <a href="{% url 'news:category_list' other_category.slug %}">
+                        {{ other_category.name }}
+                    </a>
+                </li>
+            {% endif %}
+        {% empty %}
+            <li>No other categories yet.</li>
+        {% endfor %}
+    </ul>
+{% endblock %}
