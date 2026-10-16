@@ -1,0 +1,138 @@
+:root {
+    --color-accent: #b3001b;
+    --color-text: #1c1c1c;
+    --color-muted: #6b6b6b;
+    --color-border: #e2e2e2;
+    --color-bg: #ffffff;
+    --color-bg-soft: #f6f6f6;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Georgia, "Times New Roman", serif;
+    line-height: 1.6;
+    color: var(--color-text);
+    background: var(--color-bg);
+}
+
+a {
+    color: var(--color-accent);
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.site-header {
+    border-bottom: 3px solid var(--color-text);
+    padding: 1.5rem 2rem;
+}
+
+.site-brand {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--color-text);
+    letter-spacing: 0.02em;
+}
+
+.site-tagline {
+    margin: 0.25rem 0 0;
+    color: var(--color-muted);
+    font-style: italic;
+}
+
+.site-nav {
+    margin-top: 0.5rem;
+}
+
+.site-nav a {
+    margin-right: 1rem;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.layout {
+    display: flex;
+    gap: 2rem;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.content {
+    flex: 3;
+}
+
+.sidebar {
+    flex: 1;
+    border-left: 1px solid var(--color-border);
+    padding-left: 1.5rem;
+}
+
+.article-card {
+    border-bottom: 1px solid var(--color-border);
+    padding-bottom: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.article-card-image img,
+.article-image {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin-bottom: 0.75rem;
+}
+
+.article-card-title {
+    margin: 0 0 0.5rem;
+    font-size: 1.4rem;
+}
+
+.article-card-meta,
+.article-meta {
+    color: var(--color-muted);
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 0.85rem;
+}
+
+.article-card-categories,
+.article-categories,
+.category-list {
+    list-style: none;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 0.85rem;
+}
+
+.article-card-categories li,
+.article-categories li {
+    display: inline-block;
+    margin-right: 0.75rem;
+}
+
+.empty-state {
+    background: var(--color-bg-soft);
+    border: 1px dashed var(--color-border);
+    padding: 1rem;
+    color: var(--color-muted);
+}
+
+.author-photo {
+    max-width: 100%;
+    border-radius: 50%;
+}
+
+.site-footer {
+    border-top: 1px solid var(--color-border);
+    padding: 1.5rem 2rem;
+    color: var(--color-muted);
+    font-size: 0.85rem;
+    text-align: center;
+}
