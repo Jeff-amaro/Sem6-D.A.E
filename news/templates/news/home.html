@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block title %}Portada - News Portal{% endblock %}
+
+{% block content %}
+    <h1>Latest news</h1>
+
+    <section class="article-list">
+        {% for article in articles %}
+            {% include 'news/_article_card.html' %}
+        {% empty %}
+            <p class="empty-state">There are no published articles yet.</p>
+        {% endfor %}
+    </section>
+{% endblock %}
+
+{% block sidebar %}
+    <h2>Categories</h2>
+    <ul class="category-list">
+        {% for category in categories %}
+            <li>
+                <a href="{% url 'news:category_list' category.slug %}">{{ category.name }}</a>
+            </li>
+        {% empty %}
+            <li>No categories yet.</li>
+        {% endfor %}
+    </ul>
+{% endblock %}
